@@ -59,7 +59,7 @@
     
     <div align="center" id="one">
          <h3 class="mini-title">la sensibilite horizontal : </h3>
-         <input type="number" class="input" id="Sh"/> 
+         <input type="number" class="input" id="Sh"/> <span class="mini-title">ms</span>
          <br>
          <br>
          <h3 class="mini-title">la sensibilite vertical : </h3>
@@ -85,7 +85,7 @@
                  //calculate
                  document.getElementById("la-tension").innerHTML = document.getElementById("Sv").value * document.getElementById("y").value;
                  document.getElementById("la-periode").innerHTML = document.getElementById("Sh").value * document.getElementById("x").value;
-                 document.getElementById("la-frequence").innerHTML = 1 / document.getElementById("la-periode").innerHTML;
+                 document.getElementById("la-frequence").innerHTML = 1 / (document.getElementById("la-periode").innerHTML * 0.001);
                  document.getElementById("la-tension-max").innerHTML = document.getElementById("Sv").value * document.getElementById("y").value;
                  document.getElementById("la-tension-efficace").innerHTML = document.getElementById("la-tension-max").innerHTML / 1.4142135623730950488016887242097;
                 }
