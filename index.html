@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            font-family :  'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif , bold
+        }
+        #title{
+            position: fixed;
+            color: white;
+            padding: 15px;
+            background-color: red;
+            text-align: center;
+            margin: -8px;
+           width: 100%;
+        }
+        .input{
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            text-align: center;
+            width: 200px;
+            padding: 5px;
+            background: none;
+            border-bottom: black solid;
+        }
+        .mini-title{
+            font-size: 21px;
+        }
+        #analyse{
+            position: absolute;
+            bottom: 20px;
+            right: 20%;
+            padding: 10px;
+            color: gray;
+            border-radius: 50px;
+            border: solid 0.2px gray;
+            width: 200px;
+            font-size: 20px;
+        }
+        #two , #three{
+            display: none;
+        }
+        body{
+            background-image: url("back.png");
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="title">Calculer la tension</h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <div align="center" id="one">
+         <h3 class="mini-title">la sensibilite horizontal : </h3>
+         <input type="number" class="input" id="Sh"/> 
+         <br>
+         <br>
+         <h3 class="mini-title">la sensibilite vertical : </h3>
+         <input type="number" class="input" id="Sv"/> 
+         <br>
+         <br>
+         <h3 class="mini-title">Y : </h3>
+         <input type="number" class="input" id="y"/> 
+         <br>
+         <br>
+         <h3 class="mini-title">X : </h3>
+         <input type="number" class="input" id="x"/> 
+         <br>
+         <button id="analyse" onclick="analyse()">analyser</button>
+         <script>
+             function analyse(){
+                if(document.getElementById("Sv").value == "" || document.getElementById("Sh").value == "" || document.getElementById("x").value == ""|| document.getElementById("y").value == "" ){
+                    alert("Ecriver tous les valeur pour analyser");
+                }
+                else{
+                 document.getElementById("one").style.display = "none";
+                 document.getElementById("two").style.display = "block";
+                 //calculate
+                 document.getElementById("la-tension").innerHTML = document.getElementById("Sv").value * document.getElementById("y").value;
+                 document.getElementById("la-periode").innerHTML = document.getElementById("Sh").value * document.getElementById("x").value;
+                 document.getElementById("la-frequence").innerHTML = 1 / document.getElementById("la-periode").innerHTML;
+                 document.getElementById("la-tension-max").innerHTML = document.getElementById("Sv").value * document.getElementById("y").value;
+                 document.getElementById("la-tension-efficace").innerHTML = document.getElementById("la-tension-max").innerHTML / 1.4142135623730950488016887242097;
+                }
+             }
+         </script>
+    </div> 
+    <div align = "center" id="two">
+        <div align="left">
+        <h4 onclick="rojotwo()">←</h4>
+        <script>
+            function rojotwo(){
+                
+               
+            document.getElementById("two").style.display = "none";
+            document.getElementById("one").style.display = "block";
+                
+            }
+        </script>
+    </div>
+    <h3 class="mini-title">la tension = <span id="la-tension">...</span><span>V</span></h3> 
+    <br>
+    <br>
+    <h3 class="mini-title">la periode = <span id="la-periode">...</span><span>ms</span></h3> 
+    <br>
+    <br>
+    <h3 class="mini-title">la frequence = <span id="la-frequence">...</span><span>Hz</span></h3>
+    <br>
+    <br>
+    <h3 class="mini-title">la tension max = <span id="la-tension-max">...</span><span>V</span></h3>
+    <br>
+    <br>
+    <h3 class="mini-title">la tension efficace = <span id="la-tension-efficace">...</span><span>V</span></h3>
+    <button id="analyse" onclick="regle()">les regles</button>
+    <script>
+       function regle(){
+           document.getElementById("two").style.display = "none";
+           document.getElementById("three").style.display = "block";
+       }
+    </script>
+</div>    
+<div align="center" id="three">
+    <div align="left">
+        <h4 onclick="rojothree()">←</h4>
+        <script>
+            function rojothree(){
+                
+               
+            document.getElementById("three").style.display = "none";
+            document.getElementById("two").style.display = "block";
+                
+            }
+        </script>
+    </div>
+    <h3 class="mini-title">- la tension = <br> U = Sv . Y</h3>
+    <br>
+    <br>
+    <h3 class="mini-title">- la periode = <br> T = Sh . X</h3>
+    <br>
+    <br>
+    <h3 class="mini-title">- la frequence = <br> f = 1 / T</h3>
+    <br>
+    <br>
+    <h3 class="mini-title">- la tension max = <br> Umax = Sv . Y</h3>
+    <br>
+    <br>
+    <h3 class="mini-title">- la tension efficace = <br> Ueff = Umax/√2 </h3>
+</div>
+</body>
+</html>
